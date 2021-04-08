@@ -42,6 +42,22 @@ var level01 = function (window) {
         createSawBlade(400, groundY - 20);
         createSawBlade(600, 475);
         createSawBlade(500, 415);
+
+        function createObstacle (x, y){
+            var hitZoneSize = 25;
+            var damageFromObstacle = 10;
+            var obstacleHitZone = game.createObstacle(hitZoneSize, damageFromObstacle);
+            obstacleHitZone.x = x;
+            obstacleHitZone.y = y;
+            game.addGameItem(obstacleHitZone);
+            var obstacleImage = draw.bitmap('img/branchlarge.png');
+            obstacleHitZone.addChild(obstacleImage);
+            obstacleImage.x = -25;
+            obstacleImage.y = -25;
+        }
+
+        createObstacle(300, 300);
+
         
        
         // DO NOT EDIT CODE BELOW HERE
