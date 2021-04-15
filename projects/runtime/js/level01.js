@@ -19,13 +19,19 @@ var level01 = function (window) {
                 { "type": "sawblade", "x": 400, "y": groundY -20 },
                 { "type": "sawblade", "x": 600, "y": groundY - 20 },
                 { "type": "sawblade", "x": 500, "y": groundY - 20 },
-                { "type": "obstacle", "x": 500, "y": groundY },
-                { "type": "reward", "x": 900, "y": groundY },
-                { "type": "enemy", "x": 900, "y": groundY },
-                { "type": "sawblade", "x": 900, "y": groundY },
-                { "type": "sawblade", "x": 900, "y": groundY },
-                { "type": "enemy", "x": 900, "y": groundY - 50 },
-                { "type": "reward", "x": 900, "y": groundY },
+                { "type": "obstacle", "x": 500, "y": groundY - 35},
+                { "type": "reward", "x": 800, "y": groundY - 10},
+                { "type": "enemy", "x": 900, "y": groundY - 40},
+                { "type": "sawblade", "x": 450, "y": groundY - 30},
+                { "type": "sawblade", "x": 550, "y": groundY - 25},
+                { "type": "enemy", "x": 750, "y": groundY - 50},
+                { "type": "reward", "x": 850, "y": groundY - 15},
+                { "type": "zombie", "x": 700, "y": groundY - 35},
+                { "type": "healer", "x": 650, "y": groundY - 45},
+                { "type": "zombie", "x": 725, "y": groundY - 35},
+                { "type": "healer", "x": 675, "y": groundY - 45},
+                { "type": "zombie", "x": 775, "y": groundY - 35},
+                { "type": "healer", "x": 625, "y": groundY - 45},
             ]
         };
         for ( var i = 0; i < levelData.gameItems.length; i++){
@@ -72,6 +78,7 @@ var level01 = function (window) {
             obstacleHitZone.addChild(obstacleImage);
             obstacleImage.x = -25;
             obstacleImage.y = -25;
+            obstacleHitZone.rotationalVelocity = 15;
         }
 
         function createEnemy(x, y){
@@ -101,21 +108,46 @@ var level01 = function (window) {
         function createReward(x, y){
             var reward = game.createGameItem('reward',25);
             var powerUp = draw.rect(50,50,'yellow');
-            redSquare.x = -25;
-            redSquare.y = -25;
-            reward.addChild(redSquare);
+            yellowSquare.x = -25;
+            yellowSquare.y = -25;
+            reward.addChild(yellowSquare);
             reward.x = x;
             reward.y = y;
-            game.addGameItem(enemy);
+            game.addGameItem(reward);
 
             reward.onPlayerCollision = function() {
-                console.log('The enemy has hit Halle');
+                console.log('1 life up');
                 game.changeIntegrity(10);
                 game.increaseScore(100);
                 enemy.fadeOut();
-            };
+            }
         }
-        createEnemy (300, 300);
+        function createZombie(x, y){
+            var zombie = game.createGameItem('zombie',25);
+            var redSquare = draw.bitmap('img/zombie.png');
+            zombie.x = -25;
+            zombie.y = -25;
+            zombie.addChild(redSquare);
+            zombie.x = x;
+            zombie.y = y;
+            game.addGameItem(zombie);
+        }
+        function createHealer(x, y){
+            var reward = game.createGameItem('healer',25);
+            var powerUp = draw.rect(50,50,'green');
+            greenSquare.x = -25;
+            greenSquare.y = -25;
+            healer.addChild(greenSquare);
+            healer.x = x;
+            healer.y = y;
+            game.addGameItem(healer);
+
+            reward.onPlayerCollision = function() {
+                console.log('5 lifes up');
+                game.changeIntegrity(50);
+                healer.fadeOut();
+            }
+        }
         // DO NOT EDIT CODE BELOW HERE
     }
 };
