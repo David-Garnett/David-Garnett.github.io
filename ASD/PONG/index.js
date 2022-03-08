@@ -20,6 +20,8 @@ function runProgram() {
     S: 87
   }
 
+  var scoreLeftPaddle = 0;
+  var scoreRightPaddle = 0;
 
   // Game Item Objects
 
@@ -39,9 +41,7 @@ function runProgram() {
   var leftPaddle = GameItem("#leftPaddle", 20, 200, 0, 0);
   var rightPaddle = GameItem("#rightPaddle", BOARD_WIDTH - 20 - $("#rightPaddle").width(), 200, 0, 0);
   var ball = GameItem("#ball", BOARD_WIDTH / 2, BOARD_HEIGHT / 2, (Math.random() > 0.5 ? -3 : 3), (Math.random() > 0.5 ? -3 : 3));
-  var scoreLeftPaddle = 0;
-  var scoreRightPaddle = 0;
-  var message = GameItem("#message", 20, 200, 0, 0);
+
 
   // one-time setup
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
