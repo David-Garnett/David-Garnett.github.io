@@ -1,0 +1,48 @@
+body {
+  background-color: blue;
+}
+
+#board {
+  width: 900px;
+  left: 50%;
+  margin-top: -200px;
+  margin-left: -480px;
+  position: absolute;
+  top: 50%;
+  height: 500px;
+  background-color: black;
+  border: 5px solid;
+}
+
+.snake,
+#apple {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  user-select: none;
+}
+
+.snake {
+  background-color: green;
+}
+
+#snake-head {
+  background-color: rgb(1, 70, 1);
+}
+
+#apple {
+  background-color: red;
+}
+
+h1 {
+  color: white;
+}
+
+#button {
+  font-size: 3vw;
+  font-family: cursive;
+  color: black;
+  position: absolute;
+  top: 800px;
+  left: 800px;
+}
